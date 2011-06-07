@@ -297,29 +297,29 @@ LASSO (Tibshirani 2002) or elastic net (Zou 2005) apply multivariate and depende
 resultLasso <- lassoClass(object = bcrAblOrNeg, groups = "mol.biol")
 plot(resultLasso, label = TRUE,
 		main = "Lasso coefficients in relation to degree of penalization.")
-#featResultLasso <- topTable(resultLasso, n = 15)
+featResultLasso <- topTable(resultLasso, n = 15)
 @
 
 <<tabLasso, results = tex, echo = FALSE, term = FALSE, keep.source=TRUE>>=
-#%lassoTable <- xtable(featResultLasso, label = "tablassoClass",
-#%		caption = "Features selected by Lasso, ranked from largest to smallest penalized coefficient.")
-#print(lassoTable, include.rownames = FALSE)
+lassoTable <- xtable(featResultLasso, label = "tablassoClass",
+		caption = "Features selected by Lasso, ranked from largest to smallest penalized coefficient.")
+print(lassoTable, include.rownames = FALSE)
 @
 
-%<<plotTop2_3genesLasso, fig = FALSE, echo = FALSE, term = FALSE, keep.source=TRUE>>=
-%op <- par(mfrow=c(1,2))
-%  plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1], 
-%		geneSymbol2 = featResultLasso$topList[2, 1],
-%    object = bcrAblOrNeg, groups = "mol.biol",
-%    main = "Combination of\nfirst and second gene", addLegend = TRUE, 
-%    legendPos = "topright")
-%
-%  plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1], 
-%		  geneSymbol2 = featResultLasso$topList[3, 1],
-%    object = bcrAblOrNeg, groups = "mol.biol",
-%   main = "Combination of\nfirst and third gene", addLegend = FALSE)
-%par(op)
-%@
+<<plotTop2_3genesLasso, fig = FALSE, echo = FALSE, term = FALSE, keep.source=TRUE>>=
+op <- par(mfrow=c(1,2))
+  plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1], 
+		geneSymbol2 = featResultLasso$topList[2, 1],
+    object = bcrAblOrNeg, groups = "mol.biol",
+    main = "Combination of\nfirst and second gene", addLegend = TRUE, 
+    legendPos = "topright")
+
+  plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1], 
+		  geneSymbol2 = featResultLasso$topList[3, 1],
+    object = bcrAblOrNeg, groups = "mol.biol",
+    main = "Combination of\nfirst and third gene", addLegend = FALSE)
+par(op)
+@
 
 \afterpage{\clearpage}
 \pagebreak{}
@@ -394,15 +394,15 @@ boxPlot(probesetId = rownames(tTestResult)[1], object = selBcrAblOrNeg, boxwex =
 		groups = "mol.biol", colgroups = "BT", legendPos = "topright")
 @
 
-%\subsection{Plot the expression levels of two genes versus each other}
+\subsection{Plot the expression levels of two genes versus each other}
 
-%<<plotTop2_3genesLasso, fig = TRUE, term = FALSE, keep.source=TRUE>>=
-%plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1],
-%		geneSymbol2 = featResultLasso$topList[2, 1],
-%		object = bcrAblOrNeg, groups = "mol.biol",
-%		main = "Combination of\nfirst and second gene", addLegend = TRUE, 
-%    legendPos = "topright")
-%@
+<<plotTop2_3genesLasso, fig = TRUE, term = FALSE, keep.source=TRUE>>=
+plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1],
+		geneSymbol2 = featResultLasso$topList[2, 1],
+		object = bcrAblOrNeg, groups = "mol.biol",
+		main = "Combination of\nfirst and second gene", addLegend = TRUE, 
+    legendPos = "topright")
+@
 
 \subsection{Plot expression line profiles of multiple genes/probesets across samples}
 
