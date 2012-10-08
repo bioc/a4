@@ -1,13 +1,13 @@
 Package: a4
 Type: Package
 Title: Automated Affymetrix Array Analysis Umbrella Package
-Version: 1.6.0
+Version: 1.6.1
 Date: 2011-06-04
 Author: Willem Talloen, Tobias Verbeke 
 Maintainer: Tobias Verbeke <tobias.verbeke@openanalytics.eu>
 Description: Automated Affymetrix Array Analysis Umbrella Package 
 Depends: a4Base, a4Preproc, a4Classif, a4Core, a4Reporting
-Suggests: MLP, nlcv, ALL
+Suggests: MLP, nlcv, ALL, Cairo
 biocViews: Bioinformatics, Microarray
 License: GPL-3
 
