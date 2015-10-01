@@ -434,8 +434,9 @@ plotComb2Samples(ALL, "11002", "01003",
 @
 
 <<plotComb2Samples, fig = FALSE, term = FALSE, echo=FALSE, keep.source=TRUE>>=
-require(Cairo)
-CairoPNG(filename="plotComb2Samples.png",width=500,height=500)
+#require(Cairo)
+#CairoPNG(filename="plotComb2Samples.png",width=500,height=500)
+png(filename="plotComb2Samples.png",width=500,height=500)
 plotComb2Samples(ALL, "11002", "01003",
 		xlab = "a T-cell", ylab = "another T-cell")
 dev.off()
