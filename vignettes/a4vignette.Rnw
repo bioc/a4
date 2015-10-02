@@ -162,7 +162,7 @@ This makes sense as the main difference between BCR/ABL and NEG cells is a mutat
 tabTTest <- topTable(tTestResult, n = 10)
 xtable(tabTTest,
     caption="The top 5 features selected by an ordinary t-test.",
-	label ="tablassoClass")
+  label ="tablassoClass")
 @
 
 <<tTestVolcanoPlot, fig=TRUE, term = FALSE>>=
@@ -235,7 +235,7 @@ resultPam <- pamClass(selBcrAblOrNeg, "mol.biol")
 plot(resultPam)
 featResultPam <- topTable(resultPam, n = 15)
 xtable(head(featResultPam$listGenes),
-		caption = "Top 5 features selected by PAM.")
+    caption = "Top 5 features selected by PAM.")
 @
 
 \subsection{Random forest}
@@ -248,15 +248,15 @@ resultRF <- rfClass(selBcrAblOrNeg, "mol.biol")
 plot(resultRF, which = 2)
 featResultRF <- topTable(resultRF, n = 15)
 xtable(head(featResultRF$topList),
-		caption = "Features selected by Random Forest variable importance.")
+    caption = "Features selected by Random Forest variable importance.")
   
 @
 
 
 <<plotTop2_3genesRf, fig=FALSE, echo=FALSE, keep.source=TRUE>>=
 plotCombination2genes(probesetId1=rownames(featResultRF$topList)[1],
-		probesetId2=rownames(featResultRF$topList)[2],
-		object = selBcrAblOrNeg, groups = "mol.biol")
+    probesetId2=rownames(featResultRF$topList)[2],
+    object = selBcrAblOrNeg, groups = "mol.biol")
 @
 
 \subsection{Forward filtering with various classifiers}
@@ -275,7 +275,7 @@ data(nlcvTT)
 
 <<MCRPlot, fig = TRUE, term = FALSE, keep.source=TRUE>>=
 mcrPlot_TT <- mcrPlot(nlcvTT, plot = TRUE, optimalDots = TRUE,
-		layout = TRUE, main = "t-test selection")
+    layout = TRUE, main = "t-test selection")
 @
 
 <<tabmcrPlot, results = tex, echo = FALSE>>=
@@ -296,26 +296,26 @@ LASSO (Tibshirani 2002) or elastic net (Zou 2005) apply multivariate and depende
 <<lasso, fig=TRUE, term = FALSE, keep.source=TRUE>>=
 resultLasso <- lassoClass(object = bcrAblOrNeg, groups = "mol.biol")
 plot(resultLasso, label = TRUE,
-		main = "Lasso coefficients in relation to degree of penalization.")
+    main = "Lasso coefficients in relation to degree of penalization.")
 featResultLasso <- topTable(resultLasso, n = 15)
 @
 
 <<tabLasso, results = tex, echo = FALSE, term = FALSE, keep.source=TRUE>>=
 lassoTable <- xtable(featResultLasso, label = "tablassoClass",
-		caption = "Features selected by Lasso, ranked from largest to smallest penalized coefficient.")
+    caption = "Features selected by Lasso, ranked from largest to smallest penalized coefficient.")
 print(lassoTable, include.rownames = FALSE)
 @
 
 <<plotTop2_3genesLasso, fig = FALSE, echo = FALSE, term = FALSE, keep.source=TRUE>>=
 op <- par(mfrow=c(1,2))
   plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1], 
-		geneSymbol2 = featResultLasso$topList[2, 1],
+    geneSymbol2 = featResultLasso$topList[2, 1],
     object = bcrAblOrNeg, groups = "mol.biol",
     main = "Combination of\nfirst and second gene", addLegend = TRUE, 
     legendPos = "topright")
 
   plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1], 
-		  geneSymbol2 = featResultLasso$topList[3, 1],
+      geneSymbol2 = featResultLasso$topList[3, 1],
     object = bcrAblOrNeg, groups = "mol.biol",
     main = "Combination of\nfirst and third gene", addLegend = FALSE)
 par(op)
@@ -338,12 +338,12 @@ predicted to with a high probability to be NEG, are indeed known to be NEG.
  
 <<LogisticRegressionPlot, fig=TRUE, term = FALSE, keep.source=TRUE>>=
 probabilitiesPlot(proportions = logRegRes$fit, classVar = logRegRes$y,
-		sampleNames = rownames(logRegRes), main = "Probability of being NEG")
+    sampleNames = rownames(logRegRes), main = "Probability of being NEG")
 @
 
 <<LogisticRegressionPlotBars, fig=TRUE, term = FALSE, keep.source=TRUE>>=
 probabilitiesPlot(proportions = logRegRes$fit, classVar = logRegRes$y, barPlot= TRUE,
-		sampleNames = rownames(logRegRes), main = "Probability of being NEG")
+    sampleNames = rownames(logRegRes), main = "Probability of being NEG")
 @
 
 \subsection{Receiver operating curve}
@@ -365,7 +365,7 @@ Here the most significant gene is plotted.
 
 <<plotProfile, fig = TRUE, term = FALSE, keep.source=TRUE>>=
 plot1gene(probesetId = rownames(tTestResult)[1],
-		object = selBcrAblOrNeg, groups = "mol.biol", legendPos = "topright")
+    object = selBcrAblOrNeg, groups = "mol.biol", legendPos = "topright")
 @
 
 There are some variations possible on the default \texttt{plot1gene} function.
@@ -373,14 +373,14 @@ There are some variations possible on the default \texttt{plot1gene} function.
 
 <<otherSampleIDsInPlot1gene, fig = TRUE, term = FALSE, keep.source=TRUE>>=
 plot1gene(probesetId = rownames(tTestResult)[1], object = selBcrAblOrNeg,
-		groups = "mol.biol", sampleIDs = "mol.biol", legendPos = "topright")
+    groups = "mol.biol", sampleIDs = "mol.biol", legendPos = "topright")
 @
 
 Another option is to color the samples by another categorical variable than used for ordering.
 
 <<plot1gene2vars, fig = TRUE, term = FALSE, keep.source=TRUE>>=
 plot1gene(probesetId = rownames(tTestResult)[1], object = selBcrAblOrNeg,
-		groups = "mol.biol", colgroups = 'BT', legendPos = "topright")
+    groups = "mol.biol", colgroups = 'BT', legendPos = "topright")
 @
 
 The above graphs plot one sample per tickmark in the x-axis. This is very useful to explore the data as one can
@@ -391,16 +391,16 @@ It is possible to pass arguments to the boxplot function to custopmize the graph
  
 <<boxPlot, fig = TRUE, term = FALSE, keep.source=TRUE>>=
 boxPlot(probesetId = rownames(tTestResult)[1], object = selBcrAblOrNeg, boxwex = 0.3,
-		groups = "mol.biol", colgroups = "BT", legendPos = "topright")
+    groups = "mol.biol", colgroups = "BT", legendPos = "topright")
 @
 
 \subsection{Plot the expression levels of two genes versus each other}
 
 <<plotTop2_3genesLasso, fig = TRUE, term = FALSE, keep.source=TRUE>>=
 plotCombination2genes(geneSymbol1 = featResultLasso$topList[1, 1],
-		geneSymbol2 = featResultLasso$topList[2, 1],
-		object = bcrAblOrNeg, groups = "mol.biol",
-		main = "Combination of\nfirst and second gene", addLegend = TRUE, 
+    geneSymbol2 = featResultLasso$topList[2, 1],
+    object = bcrAblOrNeg, groups = "mol.biol",
+    main = "Combination of\nfirst and second gene", addLegend = TRUE, 
     legendPos = "topright")
 @
 
@@ -418,7 +418,7 @@ probesetPos <- which(myGeneSymbol == featureData(ALL)$SYMBOL)
 myProbesetIds <- featureNames(ALL)[probesetPos]
 
 profilesPlot(object = ALL, probesetIds = myProbesetIds,
-		orderGroups = "BT", sampleIDs = "BT")
+    orderGroups = "BT", sampleIDs = "BT")
 @
 
 \afterpage{\clearpage}
@@ -428,17 +428,15 @@ It may be of interest to look at correlations between samples.
 As each dot represents a gene, there are typically many dots. It is therefore wise to color the
 dots in a density dependent way.
  
-<<plotComb2Samples, fig = FALSE, term = FALSE, keep.source=TRUE>>=
+<<plotComb2Samples, fig = FALSE, term = FALSE, keep.source=TRUE, eval=FALSE>>=
 plotComb2Samples(ALL, "11002", "01003",
-		xlab = "a T-cell", ylab = "another T-cell")
+    xlab = "a T-cell", ylab = "another T-cell")
 @
 
 <<plotComb2Samples, fig = FALSE, term = FALSE, echo=FALSE, keep.source=TRUE>>=
-#require(Cairo)
-#CairoPNG(filename="plotComb2Samples.png",width=500,height=500)
 png(filename="plotComb2Samples.png",width=500,height=500)
 plotComb2Samples(ALL, "11002", "01003",
-		xlab = "a T-cell", ylab = "another T-cell")
+    xlab = "a T-cell", ylab = "another T-cell")
 dev.off()
 @
 \begin{figure}[h]
@@ -456,17 +454,17 @@ If there are outlying genes, one can label them by their gene symbol by specifyi
 the expression intervals (X- or Y- axis or both) that contain the genes to be highlighted
 using \texttt{trsholdX} and \texttt{trsholdY}.
  
-<<plotComb2SamplesWithAnnotation, fig = FALSE, term = FALSE, keep.source=TRUE>>=
+<<plotComb2SamplesWithAnnotation, fig = FALSE, term = FALSE, keep.source=TRUE, eval=FALSE>>=
 plotComb2Samples(ALL, "84004", "01003",
-		trsholdX = c(10,12), trsholdY = c(4,6),
-		xlab = "a B-cell", ylab = "a T-cell")
+    trsholdX = c(10,12), trsholdY = c(4,6),
+    xlab = "a B-cell", ylab = "a T-cell")
 @
 
 <<plotComb2SamplesWithAnnotation2, fig = FALSE, term = FALSE, echo=FALSE>>=
-CairoPNG(filename="plotComb2SamplesWithAnnotation.png",width=500,height=500)
+png(filename="plotComb2SamplesWithAnnotation.png",width=500,height=500)
 plotComb2Samples(ALL,"84004", "01003",
-		trsholdX = c(10,12), trsholdY = c(4,6),
-		xlab = "a B-cell", ylab = "a T-cell")
+    trsholdX = c(10,12), trsholdY = c(4,6),
+    xlab = "a B-cell", ylab = "a T-cell")
 dev.off()
 @
 \begin{figure}[h]
@@ -486,11 +484,11 @@ One can also show multiple pairwise comparisons in a pairwise scatterplot matrix
 
 <<plotCombMultipleSamples, fig = FALSE, term = FALSE>>=
 plotCombMultSamples(exprs(ALL)[,c("84004", "11002", "01003")])
-#	text.panel= function(x){x, labels = c("a B-cell", "a T-cell", "another T-cell")})
+# text.panel= function(x){x, labels = c("a B-cell", "a T-cell", "another T-cell")})
 @
 
-<<plotCombMultipleSamples, fig = FALSE, term = FALSE, echo=FALSE>>=
-CairoPNG(filename="plotCombMultipleSamples.png", width=500, height=500)
+<<plotCombMultipleSamples2, fig = FALSE, term = FALSE, echo=FALSE>>=
+png(filename="plotCombMultipleSamples.png", width=500, height=500)
 plotCombMultSamples(exprs(ALL)[, c("84004", "11002", "01003")])
 dev.off()
 @
@@ -523,10 +521,10 @@ topGenes <- rownames(tTestResult)[1:20]
 # plot the log ratios versus subtype B of the top genes 
 LogRatioALL <- computeLogRatio(ALL2, reference = list(var="BT", level="B"))
 a <- plotLogRatio(e = LogRatioALL[topGenes,], openFile = FALSE, tooltipvalues = FALSE,
-		device = "pdf", filename = "GeneLRlist",
-		colorsColumnsBy = "BTtype", 
+    device = "pdf", filename = "GeneLRlist",
+    colorsColumnsBy = "BTtype", 
     main = 'Top 20 genes most differentially between T- and B-cells',
-		orderBy = list(rows = "hclust"), probe2gene = TRUE)
+    orderBy = list(rows = "hclust"), probe2gene = TRUE)
 @
 
 \begin{figure}[h]
@@ -634,7 +632,7 @@ gene set definitions, the following graph may be useful:
 <<GOgraph, fig=FALSE, results=hide>>=
   pdf(file = "GOgraph.pdf")
     plot(mlpOut, type = "GOgraph", nRow = 25)
-	dev.off()
+  dev.off()
 @
 
 \begin{figure}
