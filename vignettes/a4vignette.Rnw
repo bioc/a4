@@ -630,6 +630,8 @@ The results can be visualized in many ways, but for Gene Ontology based
 gene set definitions, the following graph may be useful:
 
 <<GOgraph, fig=FALSE, results=hide>>=
+library(Rgraphviz)
+library(GOstats)
   pdf(file = "GOgraph.pdf")
     plot(mlpOut, type = "GOgraph", nRow = 25)
   dev.off()
