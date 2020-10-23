@@ -61,7 +61,8 @@ data(ALL, package = "ALL")
 For illustrative purposes, simulated data sets can also be very valuable (but not used here).
 <<prepareSimulatedData>>=
 require(nlcv)
-esSim <- simulateData(nEffectRows=50, betweenClassDifference = 5, nNoEffectCols = 5, withinClassSd = 0.2)
+esSim <- simulateData(nEffectRows=50, betweenClassDifference = 5, 
+	nNoEffectCols = 5, withinClassSd = 0.2)
 @
 
 \subsection{ExpressionSet object}
@@ -77,7 +78,7 @@ This interesting extra gene information can be added using \texttt{addGeneInfo}.
 ALL <- addGeneInfo(ALL)
 @
 
-<<show ALL, eval=FALSE, echo=FALSE>>=
+<<showALL, eval=FALSE, echo=FALSE>>=
 # The phenotypic data
 head(pData(ALL)[, c(1:5, 13, 18, 21)])
 # The gene expression data
@@ -94,7 +95,7 @@ two types of cells with very distinct expression profiles; B-cells and T-cells. 
 gene expression will also be compared between the BCR/ABL and the NEG group within B-cells only.
 To this end, we create the expressionSet \texttt{bcrAblOrNeg} containing only B-cells with BCR/ABL or NEG.
   
-<<Create bcrAblOrNeg>>=
+<<CreatebcrAblOrNeg>>=
 Bcell <- grep("^B", as.character(ALL$BT))  # create B-Cell subset for ALL
 
 subsetType <- "BCR/ABL"  # other subsetType can be "ALL/AF4"
@@ -160,9 +161,9 @@ This makes sense as the main difference between BCR/ABL and NEG cells is a mutat
 
 <<tabTTest, results = tex, term = FALSE, keep.source=TRUE>>=
 tabTTest <- topTable(tTestResult, n = 10)
-xtable(tabTTest,
+print(xtable(tabTTest,
     caption="The top 5 features selected by an ordinary t-test.",
-  label ="tablassoClass")
+  label ="tablassoClass"))
 @
 
 <<tTestVolcanoPlot, fig=TRUE, term = FALSE>>=
@@ -629,7 +630,7 @@ mlpOut <- MLP(
 The results can be visualized in many ways, but for Gene Ontology based
 gene set definitions, the following graph may be useful:
 
-<<GOgraph, fig=FALSE, results=hide>>=
+<<GOgraph, fig=FALSE, results=hide, eval = FALSE>>=
 library(Rgraphviz)
 library(GOstats)
   pdf(file = "GOgraph.pdf")
@@ -637,9 +638,9 @@ library(GOstats)
   dev.off()
 @
 
-\begin{figure}
-\includegraphics{GOgraph}
-\end{figure}
+%\begin{figure}
+%\includegraphics{GOgraph}
+%\end{figure}
 
 \section{Software used}
 
