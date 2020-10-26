@@ -1,8 +1,8 @@
 Package: a4
 Type: Package
 Title: Automated Affymetrix Array Analysis Umbrella Package
-Version: 1.37.1
-Date: 2020-10-23
+Version: 1.37.2
+Date: 2020-10-26
 Authors@R: c(
   person(given = "Willem", family = "Talloen", role = "aut"),
   person(given = "Tobias", family = "Verbeke", role = "aut", email = "tobias.verbeke@openanalytics.eu"),
