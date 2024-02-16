@@ -1,8 +1,8 @@
 Package: a4
 Type: Package
 Title: Automated Affymetrix Array Analysis Umbrella Package
-Version: 1.50.0
-Date: 2020-10-26
+Version: 1.50.1
+Date: 2024-02-16
 Authors@R: c(
   person(given = "Willem", family = "Talloen", role = "aut"),
   person(given = "Tobias", family = "Verbeke", role = "aut", email = "tobias.verbeke@openanalytics.eu"),
@@ -10,7 +10,7 @@ Authors@R: c(
  )
 Description: Umbrella package is available for the entire Automated Affymetrix Array Analysis suite of package.
 Depends: a4Base, a4Preproc, a4Classif, a4Core, a4Reporting
-Suggests: MLP, nlcv, ALL, Cairo, Rgraphviz, GOstats
+Suggests: MLP, nlcv, ALL, Cairo, Rgraphviz, GOstats, hgu95av2.db
 License: GPL-3
 biocViews: Microarray
 RoxygenNote: 7.1.1

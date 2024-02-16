@@ -75,6 +75,7 @@ The texttt{featureData} slot is typically not yet containing all relevant
 This interesting extra gene information can be added using \texttt{addGeneInfo}.
 
 <<prepareALL>>=
+library("hgu95av2.db")
 ALL <- addGeneInfo(ALL)
 @
 
