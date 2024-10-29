@@ -1,7 +1,7 @@
 Package: a4
 Type: Package
 Title: Automated Affymetrix Array Analysis Umbrella Package
-Version: 1.54.0
+Version: 1.55.0
 Date: 2024-02-16
 Authors@R: c(
   person(given = "Willem", family = "Talloen", role = "aut"),
